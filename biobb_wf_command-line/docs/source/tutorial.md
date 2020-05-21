@@ -1,5 +1,7 @@
 # Command-line workflows with BioExcel Building Blocks
+
 ### Based on the Protein MD Setup tutorial using BioExcel Building Blocks (biobb)
+
 ***
 This tutorial aims to illustrate the process of **building up a command-line workflow** using the **BioExcel Building Blocks library (biobb)**. The tutorial is based on the **Protein Gromacs MD Setup** [Jupyter Notebook tutorial](https://github.com/bioexcel/biobb_wf_md_setup). 
 ***
@@ -29,26 +31,25 @@ This tutorial aims to illustrate the process of **building up a command-line wor
 
 
 ***
-<img src="https://bioexcel.eu/wp-content/uploads/2019/04/Bioexcell_logo_1080px_transp.png" alt="Bioexcel2 logo"
-    title="Bioexcel2 logo" width="400" />
+![](_static/bioexcel_logo.png)
 ***
 
 
 <a id="intro"></a>
-# Introduction
+## Introduction
 
 **Biomolecular workflows** built using **BioExcel building blocks** (biobb) can be launched in **command line** (without Jupyter or iPython interactivity) with a combination of a **Python script** and a separated **yaml formatted file** containing the **input parameters**. This approximation combines the power of the **scripting in Python** with the **interoperability** of **biomolecular simulation workflows** provided by the **BioExcel building blocks**, and is the one used in **production** runs. 
 
 The example used to illustrate the process of building a **command line biomolecular simulation workflow** with the **BioExcel building blocks** will be the **Protein MD Setup** presented in the [Jupyter Notebook tutorial](https://github.com/bioexcel/biobb_wf_md_setup). In the **first steps** section, the **main points** to take into account when building a **command line workflow** will be introduced, using as example the first 2 steps of the **Protein MD Setup**. In the **Protein MD Setup command-line workflow** section, the complete workflow presented in the [Jupyter Notebook tutorial](https://github.com/bioexcel/biobb_wf_md_setup) will be translated to a **Python script + yaml-formatted file** to launch it in a **command-line interface**. 
 
 ***
-# IMPORTANT NOTE
+## IMPORTANT NOTE
 
 Please note that this Jupyter Notebook is **NOT executable**, it is just used to **illustrate the process**. Cells containing source code are used to **show information** in a graphical way, but they are **NOT designed to be executed**. 
 
 ***
 <a id="why"></a>
-# Why command line
+## Why command line
 
 **Jupyter Notebooks** are fantastic tools to explore and play with software, and in particular, with the **BioExcel building blocks** library. But when a workflow is ready to start with **production**, or it needs to be expanded with more complex **loop/conditional** structures, the best option is to move from a **GUI** to a **command line** execution. In **command line** is where the **real power** of the **BioExcel building blocks** unleashes. 
 
@@ -63,12 +64,12 @@ With this, there's no need for the **main Python code** to be modified for every
 
 ***
 <a id="starting"></a>
-# Essential points / Before Starting
+## Essential points / Before Starting
 
 Before starting with the **tutorial**, a set of **important terms** that will appear during the building of **BioExcel building blocks workflows** need to be introduced. These **terms** are divided in the **workflow** ones, applied in the **Python script** describing the **workflow**, and the **configuration input file** ones, applied in the separated **YAML configuration file**.
 
 <a id="workflow_concepts"></a>
-## Workflow general concepts (Python):
+### Workflow general concepts (Python):
 
 **BioExcel building blocks** workflows Python scripts always start with the **initialization of 3 main variables**:  
 
@@ -178,7 +179,7 @@ global_log, _ = file_utils.get_logs(path="/home/biobb/wf_example", level='WARNIN
 ```
 
 <a id="config_concepts"></a>
-## Configuration input file concepts (YAML):
+### Configuration input file concepts (YAML):
 
 The **YAML configuration file** that contains all the **workflow input parameters** has a well-defined structure, divided in **2 main sections**: the **Global Workflow Properties**, which are properties applied to the whole workflow, and the different **Workflow Steps**, with properties for all the different steps of the workflow, one by one. 
 
@@ -266,7 +267,7 @@ step1_pmx_mutate:
 
 ***
 <a id="first_steps"></a>
-# First Example
+## First Example
 
 The first two steps of the **Protein MD Setup** workflow are responsible for downloading a **protein structure** from the **PDB database**, and **fixing the structure**, adding any **missing side chain atoms**. The building blocks used for this are the [Pdb](https://github.com/bioexcel/biobb_io/blob/master/biobb_io/api/pdb.py) building block, from the [biobb_io](https://github.com/bioexcel/biobb_io) package, including tools to **fetch biomolecular data from public databases**, and the [FixSideChain](https://github.com/bioexcel/biobb_model/blob/master/biobb_model/model/fix_side_chain.py) building block, from the [biobb_model](https://github.com/bioexcel/biobb_model) package, including **tools to check and model 3d structures**, **create mutations** or **reconstruct missing atoms**. 
 
@@ -316,7 +317,7 @@ Converting these 2 steps into a **command-line workflow** requires to split the 
 * The **workflow** (**Python script**)
 * The **input parameters** (**YAML file**)
 
-## Python Script
+### Python Script
 
 The **Python script** is build taking just the calls to the **BioExcel building blocks**.
 
@@ -390,7 +391,7 @@ Pdb(**conf_inputs["step1_pdb"], properties=conf_properties["step1_pdb"]).launch(
 FixSideChain(**conf_inputs["step2_fixsidechain"], properties=conf_properties["step2_fixsidechain"]).launch()
 ```
 
-## YAML configuration file
+### YAML configuration file
 
 The **YAML configuration file** containing the **input parameters** for this example includes the **paths** and **properties** of the two first steps of the **Protein MD Setup** workflow:
 
@@ -413,7 +414,7 @@ step2_fixsidechain:
 ```
 
 
-## Run example workflow
+### Run example workflow
 
 The **final step** of the process is running the **command-line workflow**. For that, the **Python script** and the **YAML configuration file** presented in the previous cells should be written to disk (e.g. biobb_MDsetup_tutorial-lite.py and biobb_MDsetup_tutorial-lite.yaml), and finally both files should be used to run the workflow.
 
@@ -426,7 +427,7 @@ The **command line** is shown in the cell below:
 python biobb_MDsetup_tutorial-lite.py biobb_MDsetup_tutorial-lite.yaml 
 ```
 
-## Workflow output
+### Workflow output
 
 The **execution of the workflow** will write information to the **standard output** such as the **tools** being executed, the **command lines**, **inputs and outputs** used, and **state** of each step (exit codes). The next cell contains a **real output** for the execution of our first example:
 
@@ -484,11 +485,11 @@ Structure saved on /Users/biobb_tutorials/VT/cli/Yaml/md_tutorial-lite/step2_fix
 
 ***
 <a id="mdsetup"></a>
-# Protein MD-Setup workflow
+## Protein MD-Setup workflow
 
 The **last step** of this tutorial illustrates the building of a **complex workflow** using the **BioExcel building blocks** library in **command line**. The example used is taken from the **Protein MD Setup** [Jupyter Notebook](http://mmb.irbbarcelona.org/biobb/availability/tutorials/md_setup) tutorial. It is **strongly recommended** to take a look at this notebook before moving on to the next sections of this tutorial, as it contains information for all the **building blocks** used. The aim of this tutorial is to illustrate how to build a **command line workflow** using the **BioExcel building blocks**. For information about the science behind every step of the workflow, please refer to the **Protein MD Setup** Jupyter Notebook tutorial. The workflow presented in the next cells is a translation of the very same workflow to **Python + YAML files**, including the same number of steps (23) and **building blocks**.
 
-## Steps:
+### Steps:
 
 First of all, let's define the **steps of the workflow**.
 
@@ -508,7 +509,7 @@ Mandatory and optional **inputs** and **outputs** of every **building block** ca
 
 As explained in the previous sections, the workflow should be **split in two different files**: a **Python script** including the **workflow pipeline**, and a **YAML file** containing all the **required inputs**.
 
-## Python Script:
+### Python Script:
 
 The steps to convert the **Protein MD Setup Jupyter Notebook tutorial** to a **command line workflow** are simple:
  
@@ -635,7 +636,7 @@ global_log.info("step23_dry: Removing water molecules and ions from the resultin
 GMXTrjConvStr(**global_paths["step23_dry"], properties=global_prop["step23_dry"]).launch()
 ```
 
-## Input YAML Configuration File:
+### Input YAML Configuration File:
 
 The **YAML configuration file** containing the **input parameters** for the **Protein MD Setup** workflow includes the **workflow global properties** and the specific **paths** and **properties** of the previously introduced **23 steps**.
 
@@ -849,7 +850,7 @@ step23_dry:
       selection: Protein
 ```
 
-## Running the workflow:
+### Running the workflow:
 
 The **final step of the process** is **running the workflow**. For that, the complete workflow **Python Script** should be written to a file (e.g. biobb_MDsetup_tutorial.py), the **YAML configuration input file** should be written to a separate file (e.g. biobb_MDsetup_tutorial.yaml) and finally both files should be used for the **command line execution**.
 
@@ -862,7 +863,7 @@ The final **command line** is shown in the cell below:
 python biobb_MDsetup_tutorial.py biobb_MDsetup_tutorial.yaml
 ```
 
-## Workflow output
+### Workflow output
 
 The **execution of the workflow** will write information to the **standard output** such as the **tools** being executed, the **command lines**, **inputs and outputs** used, and **state** of each step (exit codes). Thanks to the additional information added in the **Python Script**, the **log file** contains a line for **each of the steps** being executed. The next cell contains a **real output** for the execution of the **Protein MD Setup command line workflow**:
 
@@ -963,7 +964,7 @@ The **execution of the workflow** will write information to the **standard outpu
 
 ```
 
-## Next steps
+### Next steps
 
 Now that you have the **Protein MD Setup command line workflow** ready, try to play with it doing **simple exercises**:
 
@@ -982,7 +983,7 @@ If you have found the tutorial interesting, please take a look at the **[BioExce
 ***
 <a id="questions"></a>
 
-# Questions & Comments
+## Questions & Comments
 
 Questions, issues, suggestions and comments are really welcome!
 

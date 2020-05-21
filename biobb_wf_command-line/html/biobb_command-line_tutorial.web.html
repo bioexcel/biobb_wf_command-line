@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>biobb_command-line_tutorial.web</title>
+<title>biobb_command-line_tutorial</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13106,8 +13106,7 @@ div#notebook {
 <li><a href="#questions">Questions &amp; Comments</a></li>
 </ol>
 <hr>
-<p><img src="logo.png" alt="Bioexcel2 logo"
-    title="Bioexcel2 logo" width="400" /></p>
+<p><img src="logo.png" alt=""></p>
 <hr>
 
 </div>
@@ -13117,7 +13116,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="intro"></a></p>
-<h1 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h1><p><strong>Biomolecular workflows</strong> built using <strong>BioExcel building blocks</strong> (biobb) can be launched in <strong>command line</strong> (without Jupyter or iPython interactivity) with a combination of a <strong>Python script</strong> and a separated <strong>yaml formatted file</strong> containing the <strong>input parameters</strong>. This approximation combines the power of the <strong>scripting in Python</strong> with the <strong>interoperability</strong> of <strong>biomolecular simulation workflows</strong> provided by the <strong>BioExcel building blocks</strong>, and is the one used in <strong>production</strong> runs.</p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p><strong>Biomolecular workflows</strong> built using <strong>BioExcel building blocks</strong> (biobb) can be launched in <strong>command line</strong> (without Jupyter or iPython interactivity) with a combination of a <strong>Python script</strong> and a separated <strong>yaml formatted file</strong> containing the <strong>input parameters</strong>. This approximation combines the power of the <strong>scripting in Python</strong> with the <strong>interoperability</strong> of <strong>biomolecular simulation workflows</strong> provided by the <strong>BioExcel building blocks</strong>, and is the one used in <strong>production</strong> runs.</p>
 <p>The example used to illustrate the process of building a <strong>command line biomolecular simulation workflow</strong> with the <strong>BioExcel building blocks</strong> will be the <strong>Protein MD Setup</strong> presented in the <a href="https://github.com/bioexcel/biobb_wf_md_setup">Jupyter Notebook tutorial</a>. In the <strong>first steps</strong> section, the <strong>main points</strong> to take into account when building a <strong>command line workflow</strong> will be introduced, using as example the first 2 steps of the <strong>Protein MD Setup</strong>. In the <strong>Protein MD Setup command-line workflow</strong> section, the complete workflow presented in the <a href="https://github.com/bioexcel/biobb_wf_md_setup">Jupyter Notebook tutorial</a> will be translated to a <strong>Python script + yaml-formatted file</strong> to launch it in a <strong>command-line interface</strong>.</p>
 
 </div>
@@ -13127,7 +13126,7 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<h1 id="IMPORTANT-NOTE">IMPORTANT NOTE<a class="anchor-link" href="#IMPORTANT-NOTE">&#182;</a></h1><p>Please note that this Jupyter Notebook is <strong>NOT executable</strong>, it is just used to <strong>illustrate the process</strong>. Cells containing source code are used to <strong>show information</strong> in a graphical way, but they are <strong>NOT designed to be executed</strong>.</p>
+<h2 id="IMPORTANT-NOTE">IMPORTANT NOTE<a class="anchor-link" href="#IMPORTANT-NOTE">&#182;</a></h2><p>Please note that this Jupyter Notebook is <strong>NOT executable</strong>, it is just used to <strong>illustrate the process</strong>. Cells containing source code are used to <strong>show information</strong> in a graphical way, but they are <strong>NOT designed to be executed</strong>.</p>
 
 </div>
 </div>
@@ -13137,7 +13136,7 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id="why"></a></p>
-<h1 id="Why-command-line">Why command line<a class="anchor-link" href="#Why-command-line">&#182;</a></h1><p><strong>Jupyter Notebooks</strong> are fantastic tools to explore and play with software, and in particular, with the <strong>BioExcel building blocks</strong> library. But when a workflow is ready to start with <strong>production</strong>, or it needs to be expanded with more complex <strong>loop/conditional</strong> structures, the best option is to move from a <strong>GUI</strong> to a <strong>command line</strong> execution. In <strong>command line</strong> is where the <strong>real power</strong> of the <strong>BioExcel building blocks</strong> unleashes.</p>
+<h2 id="Why-command-line">Why command line<a class="anchor-link" href="#Why-command-line">&#182;</a></h2><p><strong>Jupyter Notebooks</strong> are fantastic tools to explore and play with software, and in particular, with the <strong>BioExcel building blocks</strong> library. But when a workflow is ready to start with <strong>production</strong>, or it needs to be expanded with more complex <strong>loop/conditional</strong> structures, the best option is to move from a <strong>GUI</strong> to a <strong>command line</strong> execution. In <strong>command line</strong> is where the <strong>real power</strong> of the <strong>BioExcel building blocks</strong> unleashes.</p>
 <p>Going from a <strong>Jupyter Notebook</strong> to a <strong>command line python script</strong> is as easy as <strong>exporting</strong> the notebook to a <strong>Python script</strong> (Menu --&gt; File --&gt; Download as --&gt; Python (.py) ). The <strong>downloaded Python script</strong> will be executable just typing <em>python name_of_the_notebook.py</em> (in our case, <em>python biobb_MDsetup_tutorial.py</em>). Remember that for the script to properly work, the library modules should have been <strong>previously installed</strong> in your  <strong>conda environment</strong>, following the <strong>Protein MD tutorial</strong> installation steps (<em>Conda Installation and Launch</em>).</p>
 <p>Moving from the <strong>Jupyter environment</strong> to a <strong>command line</strong>, we are going to miss the <strong>interactivity</strong> and the possibility to use <strong>graphical support</strong> such as 3D structure viewers or plot representation. But it will offer us a jump to the <strong>High Throughput</strong> (HT) regime. Many different instances of the workflow can be launched at the same time with different inputs. Command line executions are offering us <strong>automation and repetition</strong>. However, when a particular <strong>input file</strong> or <strong>step parameter</strong> needs to be changed, the main <strong>Python script</strong> should be changed. That's why the <strong>BioExcel building blocks workflows</strong> are divided in <strong>two files</strong>:</p>
 <ul>
@@ -13154,9 +13153,9 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id="starting"></a></p>
-<h1 id="Essential-points-/-Before-Starting">Essential points / Before Starting<a class="anchor-link" href="#Essential-points-/-Before-Starting">&#182;</a></h1><p>Before starting with the <strong>tutorial</strong>, a set of <strong>important terms</strong> that will appear during the building of <strong>BioExcel building blocks workflows</strong> need to be introduced. These <strong>terms</strong> are divided in the <strong>workflow</strong> ones, applied in the <strong>Python script</strong> describing the <strong>workflow</strong>, and the <strong>configuration input file</strong> ones, applied in the separated <strong>YAML configuration file</strong>.</p>
+<h2 id="Essential-points-/-Before-Starting">Essential points / Before Starting<a class="anchor-link" href="#Essential-points-/-Before-Starting">&#182;</a></h2><p>Before starting with the <strong>tutorial</strong>, a set of <strong>important terms</strong> that will appear during the building of <strong>BioExcel building blocks workflows</strong> need to be introduced. These <strong>terms</strong> are divided in the <strong>workflow</strong> ones, applied in the <strong>Python script</strong> describing the <strong>workflow</strong>, and the <strong>configuration input file</strong> ones, applied in the separated <strong>YAML configuration file</strong>.</p>
 <p><a id="workflow_concepts"></a></p>
-<h2 id="Workflow-general-concepts-(Python):">Workflow general concepts (Python):<a class="anchor-link" href="#Workflow-general-concepts-(Python):">&#182;</a></h2><p><strong>BioExcel building blocks</strong> workflows Python scripts always start with the <strong>initialization of 3 main variables</strong>:</p>
+<h3 id="Workflow-general-concepts-(Python):">Workflow general concepts (Python):<a class="anchor-link" href="#Workflow-general-concepts-(Python):">&#182;</a></h3><p><strong>BioExcel building blocks</strong> workflows Python scripts always start with the <strong>initialization of 3 main variables</strong>:</p>
 <ul>
 <li><strong>Configuration info</strong> (conf), loaded from the input configuration file.</li>
 <li><strong>Properties and parameters</strong> (global_prop, global_paths) for all the different steps of the workflow, parsed from the configuration info.</li>
@@ -13269,7 +13268,7 @@ Example:
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><a id="config_concepts"></a></p>
-<h2 id="Configuration-input-file-concepts-(YAML):">Configuration input file concepts (YAML):<a class="anchor-link" href="#Configuration-input-file-concepts-(YAML):">&#182;</a></h2><p>The <strong>YAML configuration file</strong> that contains all the <strong>workflow input parameters</strong> has a well-defined structure, divided in <strong>2 main sections</strong>: the <strong>Global Workflow Properties</strong>, which are properties applied to the whole workflow, and the different <strong>Workflow Steps</strong>, with properties for all the different steps of the workflow, one by one.</p>
+<h3 id="Configuration-input-file-concepts-(YAML):">Configuration input file concepts (YAML):<a class="anchor-link" href="#Configuration-input-file-concepts-(YAML):">&#182;</a></h3><p>The <strong>YAML configuration file</strong> that contains all the <strong>workflow input parameters</strong> has a well-defined structure, divided in <strong>2 main sections</strong>: the <strong>Global Workflow Properties</strong>, which are properties applied to the whole workflow, and the different <strong>Workflow Steps</strong>, with properties for all the different steps of the workflow, one by one.</p>
 <ol>
 <li><p><strong>Global Workflow Properties</strong>: Define global workflow properties and are typically stated at the beginning of the YAML file. Available global properties are:</p>
 <ul>
@@ -13401,7 +13400,7 @@ Example:
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id="first_steps"></a></p>
-<h1 id="First-Example">First Example<a class="anchor-link" href="#First-Example">&#182;</a></h1><p>The first two steps of the <strong>Protein MD Setup</strong> workflow are responsible for downloading a <strong>protein structure</strong> from the <strong>PDB database</strong>, and <strong>fixing the structure</strong>, adding any <strong>missing side chain atoms</strong>. The building blocks used for this are the <a href="https://github.com/bioexcel/biobb_io/blob/master/biobb_io/api/pdb.py">Pdb</a> building block, from the <a href="https://github.com/bioexcel/biobb_io">biobb_io</a> package, including tools to <strong>fetch biomolecular data from public databases</strong>, and the <a href="https://github.com/bioexcel/biobb_model/blob/master/biobb_model/model/fix_side_chain.py">FixSideChain</a> building block, from the <a href="https://github.com/bioexcel/biobb_model">biobb_model</a> package, including <strong>tools to check and model 3d structures</strong>, <strong>create mutations</strong> or <strong>reconstruct missing atoms</strong>.</p>
+<h2 id="First-Example">First Example<a class="anchor-link" href="#First-Example">&#182;</a></h2><p>The first two steps of the <strong>Protein MD Setup</strong> workflow are responsible for downloading a <strong>protein structure</strong> from the <strong>PDB database</strong>, and <strong>fixing the structure</strong>, adding any <strong>missing side chain atoms</strong>. The building blocks used for this are the <a href="https://github.com/bioexcel/biobb_io/blob/master/biobb_io/api/pdb.py">Pdb</a> building block, from the <a href="https://github.com/bioexcel/biobb_io">biobb_io</a> package, including tools to <strong>fetch biomolecular data from public databases</strong>, and the <a href="https://github.com/bioexcel/biobb_model/blob/master/biobb_model/model/fix_side_chain.py">FixSideChain</a> building block, from the <a href="https://github.com/bioexcel/biobb_model">biobb_model</a> package, including <strong>tools to check and model 3d structures</strong>, <strong>create mutations</strong> or <strong>reconstruct missing atoms</strong>.</p>
 <p>The first 2 steps of the <strong>Protein MD Setup</strong> workflow <a href="https://github.com/bioexcel/biobb_wf_md_setup">Jupyter Notebook tutorial</a> look like this:</p>
 
 </div>
@@ -13462,7 +13461,7 @@ Example:
 <li>The <strong>workflow</strong> (<strong>Python script</strong>)</li>
 <li>The <strong>input parameters</strong> (<strong>YAML file</strong>)</li>
 </ul>
-<h2 id="Python-Script">Python Script<a class="anchor-link" href="#Python-Script">&#182;</a></h2><p>The <strong>Python script</strong> is build taking just the calls to the <strong>BioExcel building blocks</strong>.</p>
+<h3 id="Python-Script">Python Script<a class="anchor-link" href="#Python-Script">&#182;</a></h3><p>The <strong>Python script</strong> is build taking just the calls to the <strong>BioExcel building blocks</strong>.</p>
 <p>Step by step, first we need to import all the required modules:</p>
 <ul>
 <li><strong>sys</strong>, to be able to retrieve the <strong>input parameters</strong> of the <strong>Python script</strong> (argv).</li>
@@ -13590,7 +13589,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="YAML-configuration-file">YAML configuration file<a class="anchor-link" href="#YAML-configuration-file">&#182;</a></h2><p>The <strong>YAML configuration file</strong> containing the <strong>input parameters</strong> for this example includes the <strong>paths</strong> and <strong>properties</strong> of the two first steps of the <strong>Protein MD Setup</strong> workflow:</p>
+<h3 id="YAML-configuration-file">YAML configuration file<a class="anchor-link" href="#YAML-configuration-file">&#182;</a></h3><p>The <strong>YAML configuration file</strong> containing the <strong>input parameters</strong> for this example includes the <strong>paths</strong> and <strong>properties</strong> of the two first steps of the <strong>Protein MD Setup</strong> workflow:</p>
 
 </div>
 </div>
@@ -13624,7 +13623,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Run-example-workflow">Run example workflow<a class="anchor-link" href="#Run-example-workflow">&#182;</a></h2><p>The <strong>final step</strong> of the process is running the <strong>command-line workflow</strong>. For that, the <strong>Python script</strong> and the <strong>YAML configuration file</strong> presented in the previous cells should be written to disk (e.g. biobb_MDsetup_tutorial-lite.py and biobb_MDsetup_tutorial-lite.yaml), and finally both files should be used to run the workflow.</p>
+<h3 id="Run-example-workflow">Run example workflow<a class="anchor-link" href="#Run-example-workflow">&#182;</a></h3><p>The <strong>final step</strong> of the process is running the <strong>command-line workflow</strong>. For that, the <strong>Python script</strong> and the <strong>YAML configuration file</strong> presented in the previous cells should be written to disk (e.g. biobb_MDsetup_tutorial-lite.py and biobb_MDsetup_tutorial-lite.yaml), and finally both files should be used to run the workflow.</p>
 <p>It is important to note that in order to properly run the workflow, all the <strong>BioExcel building blocks modules</strong> used should be <strong>previously installed</strong> following the <strong>Protein MD tutorial</strong> installation steps (<em>Conda Installation and Launch</em>).</p>
 <p>The <strong>command line</strong> is shown in the cell below:</p>
 
@@ -13647,7 +13646,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workflow-output">Workflow output<a class="anchor-link" href="#Workflow-output">&#182;</a></h2><p>The <strong>execution of the workflow</strong> will write information to the <strong>standard output</strong> such as the <strong>tools</strong> being executed, the <strong>command lines</strong>, <strong>inputs and outputs</strong> used, and <strong>state</strong> of each step (exit codes). The next cell contains a <strong>real output</strong> for the execution of our first example:</p>
+<h3 id="Workflow-output">Workflow output<a class="anchor-link" href="#Workflow-output">&#182;</a></h3><p>The <strong>execution of the workflow</strong> will write information to the <strong>standard output</strong> such as the <strong>tools</strong> being executed, the <strong>command lines</strong>, <strong>inputs and outputs</strong> used, and <strong>state</strong> of each step (exit codes). The next cell contains a <strong>real output</strong> for the execution of our first example:</p>
 
 </div>
 </div>
@@ -13717,8 +13716,8 @@ Example:
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id="mdsetup"></a></p>
-<h1 id="Protein-MD-Setup-workflow">Protein MD-Setup workflow<a class="anchor-link" href="#Protein-MD-Setup-workflow">&#182;</a></h1><p>The <strong>last step</strong> of this tutorial illustrates the building of a <strong>complex workflow</strong> using the <strong>BioExcel building blocks</strong> library in <strong>command line</strong>. The example used is taken from the <strong>Protein MD Setup</strong> <a href="http://mmb.irbbarcelona.org/biobb/availability/tutorials/md_setup">Jupyter Notebook</a> tutorial. It is <strong>strongly recommended</strong> to take a look at this notebook before moving on to the next sections of this tutorial, as it contains information for all the <strong>building blocks</strong> used. The aim of this tutorial is to illustrate how to build a <strong>command line workflow</strong> using the <strong>BioExcel building blocks</strong>. For information about the science behind every step of the workflow, please refer to the <strong>Protein MD Setup</strong> Jupyter Notebook tutorial. The workflow presented in the next cells is a translation of the very same workflow to <strong>Python + YAML files</strong>, including the same number of steps (23) and <strong>building blocks</strong>.</p>
-<h2 id="Steps:">Steps:<a class="anchor-link" href="#Steps:">&#182;</a></h2><p>First of all, let's define the <strong>steps of the workflow</strong>.</p>
+<h2 id="Protein-MD-Setup-workflow">Protein MD-Setup workflow<a class="anchor-link" href="#Protein-MD-Setup-workflow">&#182;</a></h2><p>The <strong>last step</strong> of this tutorial illustrates the building of a <strong>complex workflow</strong> using the <strong>BioExcel building blocks</strong> library in <strong>command line</strong>. The example used is taken from the <strong>Protein MD Setup</strong> <a href="http://mmb.irbbarcelona.org/biobb/availability/tutorials/md_setup">Jupyter Notebook</a> tutorial. It is <strong>strongly recommended</strong> to take a look at this notebook before moving on to the next sections of this tutorial, as it contains information for all the <strong>building blocks</strong> used. The aim of this tutorial is to illustrate how to build a <strong>command line workflow</strong> using the <strong>BioExcel building blocks</strong>. For information about the science behind every step of the workflow, please refer to the <strong>Protein MD Setup</strong> Jupyter Notebook tutorial. The workflow presented in the next cells is a translation of the very same workflow to <strong>Python + YAML files</strong>, including the same number of steps (23) and <strong>building blocks</strong>.</p>
+<h3 id="Steps:">Steps:<a class="anchor-link" href="#Steps:">&#182;</a></h3><p>First of all, let's define the <strong>steps of the workflow</strong>.</p>
 <ul>
 <li><strong>Fetching PDB Structure</strong>: step 1</li>
 <li><strong>Fix Protein Structure</strong>: step 2</li>
@@ -13734,7 +13733,7 @@ Example:
 </ul>
 <p>Mandatory and optional <strong>inputs</strong> and <strong>outputs</strong> of every <strong>building block</strong> can be consulted in the appropriate <strong>documentation</strong> pages from the corresponding <strong>BioExcel building block category</strong> (see updated table <a href="http://mmb.irbbarcelona.org/webdev/slim/biobb/public/availability/source">here</a>).</p>
 <p>As explained in the previous sections, the workflow should be <strong>split in two different files</strong>: a <strong>Python script</strong> including the <strong>workflow pipeline</strong>, and a <strong>YAML file</strong> containing all the <strong>required inputs</strong>.</p>
-<h2 id="Python-Script:">Python Script:<a class="anchor-link" href="#Python-Script:">&#182;</a></h2><p>The steps to convert the <strong>Protein MD Setup Jupyter Notebook tutorial</strong> to a <strong>command line workflow</strong> are simple:</p>
+<h3 id="Python-Script:">Python Script:<a class="anchor-link" href="#Python-Script:">&#182;</a></h3><p>The steps to convert the <strong>Protein MD Setup Jupyter Notebook tutorial</strong> to a <strong>command line workflow</strong> are simple:</p>
 <ol>
 <li><strong>Importing</strong> all the needed <strong>libraries</strong>: <strong>system libraries</strong> (sys, os, argparse) and <strong>BioExcel building block libraries</strong> (biobb_*).</li>
 <li>Parsing the <strong>input configuration file (YAML)</strong> (see previous steps of this tutorial), and dividing the information in <strong>global paths</strong> and <strong>global properties</strong>. Optionally <strong>initializing a global log</strong> file.  </li>
@@ -13872,7 +13871,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Input-YAML-Configuration-File:">Input YAML Configuration File:<a class="anchor-link" href="#Input-YAML-Configuration-File:">&#182;</a></h2><p>The <strong>YAML configuration file</strong> containing the <strong>input parameters</strong> for the <strong>Protein MD Setup</strong> workflow includes the <strong>workflow global properties</strong> and the specific <strong>paths</strong> and <strong>properties</strong> of the previously introduced <strong>23 steps</strong>.</p>
+<h3 id="Input-YAML-Configuration-File:">Input YAML Configuration File:<a class="anchor-link" href="#Input-YAML-Configuration-File:">&#182;</a></h3><p>The <strong>YAML configuration file</strong> containing the <strong>input parameters</strong> for the <strong>Protein MD Setup</strong> workflow includes the <strong>workflow global properties</strong> and the specific <strong>paths</strong> and <strong>properties</strong> of the previously introduced <strong>23 steps</strong>.</p>
 <p>The <strong>workflow global properties</strong> are typically stated at the beginning of the YAML file (e.g. <em>working_dir_path: md_tutorial</em>).</p>
 <p>The <strong>name of the steps</strong> should <strong>match</strong> the one written in the <strong>Python Script</strong>: step name is the <strong>link</strong> of the two files (e.g. <em>step2_fixsidechain</em>).</p>
 <p>For <strong>each step</strong>, the <strong>paths</strong> section contains the list of <strong>input and/or output files</strong>, either with <strong>file names</strong> (with relative or absolute system paths) or with <strong>dependencies</strong> from previous steps of the workflow (see previous sections of the tutorial).</p>
@@ -14093,7 +14092,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Running-the-workflow:">Running the workflow:<a class="anchor-link" href="#Running-the-workflow:">&#182;</a></h2><p>The <strong>final step of the process</strong> is <strong>running the workflow</strong>. For that, the complete workflow <strong>Python Script</strong> should be written to a file (e.g. biobb_MDsetup_tutorial.py), the <strong>YAML configuration input file</strong> should be written to a separate file (e.g. biobb_MDsetup_tutorial.yaml) and finally both files should be used for the <strong>command line execution</strong>.</p>
+<h3 id="Running-the-workflow:">Running the workflow:<a class="anchor-link" href="#Running-the-workflow:">&#182;</a></h3><p>The <strong>final step of the process</strong> is <strong>running the workflow</strong>. For that, the complete workflow <strong>Python Script</strong> should be written to a file (e.g. biobb_MDsetup_tutorial.py), the <strong>YAML configuration input file</strong> should be written to a separate file (e.g. biobb_MDsetup_tutorial.yaml) and finally both files should be used for the <strong>command line execution</strong>.</p>
 <p>As in the previous example, it is important to note that in order to <strong>properly run the workflow</strong>, all the <strong>software dependencies</strong> should have been previously <strong>installed in the system</strong>, following the <strong>Protein MD tutorial</strong> installation steps (<em>Conda Installation and Launch</em>).</p>
 <p>The final <strong>command line</strong> is shown in the cell below:</p>
 
@@ -14116,7 +14115,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workflow-output">Workflow output<a class="anchor-link" href="#Workflow-output">&#182;</a></h2><p>The <strong>execution of the workflow</strong> will write information to the <strong>standard output</strong> such as the <strong>tools</strong> being executed, the <strong>command lines</strong>, <strong>inputs and outputs</strong> used, and <strong>state</strong> of each step (exit codes). Thanks to the additional information added in the <strong>Python Script</strong>, the <strong>log file</strong> contains a line for <strong>each of the steps</strong> being executed. The next cell contains a <strong>real output</strong> for the execution of the <strong>Protein MD Setup command line workflow</strong>:</p>
+<h3 id="Workflow-output">Workflow output<a class="anchor-link" href="#Workflow-output">&#182;</a></h3><p>The <strong>execution of the workflow</strong> will write information to the <strong>standard output</strong> such as the <strong>tools</strong> being executed, the <strong>command lines</strong>, <strong>inputs and outputs</strong> used, and <strong>state</strong> of each step (exit codes). Thanks to the additional information added in the <strong>Python Script</strong>, the <strong>log file</strong> contains a line for <strong>each of the steps</strong> being executed. The next cell contains a <strong>real output</strong> for the execution of the <strong>Protein MD Setup command line workflow</strong>:</p>
 
 </div>
 </div>
@@ -14228,7 +14227,7 @@ Example:
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Next-steps">Next steps<a class="anchor-link" href="#Next-steps">&#182;</a></h2><p>Now that you have the <strong>Protein MD Setup command line workflow</strong> ready, try to play with it doing <strong>simple exercises</strong>:</p>
+<h3 id="Next-steps">Next steps<a class="anchor-link" href="#Next-steps">&#182;</a></h3><p>Now that you have the <strong>Protein MD Setup command line workflow</strong> ready, try to play with it doing <strong>simple exercises</strong>:</p>
 <ul>
 <li>Change input PDB code.</li>
 <li>Make equilibration phases long.</li>
@@ -14248,7 +14247,7 @@ Example:
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p><a id="questions"></a></p>
-<h1 id="Questions-&amp;-Comments">Questions &amp; Comments<a class="anchor-link" href="#Questions-&amp;-Comments">&#182;</a></h1><p>Questions, issues, suggestions and comments are really welcome!</p>
+<h2 id="Questions-&amp;-Comments">Questions &amp; Comments<a class="anchor-link" href="#Questions-&amp;-Comments">&#182;</a></h2><p>Questions, issues, suggestions and comments are really welcome!</p>
 <ul>
 <li><p>GitHub issues:</p>
 <ul>

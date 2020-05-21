@@ -29,7 +29,8 @@ This tutorial aims to illustrate the process of **building up a command-line wor
 
 
 ***
-![](logo.png)
+<img src="https://bioexcel.eu/wp-content/uploads/2019/04/Bioexcell_logo_1080px_transp.png" alt="Bioexcel2 logo"
+    title="Bioexcel2 logo" width="400" />
 ***
 
 

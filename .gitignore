@@ -27,4 +27,5 @@ biobb_wf_command-line/notebooks/*.web*.ipynb
 biobb_wf_command-line/notebooks/*.docs.ipynb
 *.old.ipynb
 *.bk.ipynb
+*.bk
 \#*\#

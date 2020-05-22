@@ -13161,76 +13161,78 @@ div#notebook {
 <li><strong>Properties and parameters</strong> (global_prop, global_paths) for all the different steps of the workflow, parsed from the configuration info.</li>
 </ul>
 <details>
-  <summary style="cursor:pointer;">Configuration Info (Click to expand) </summary>
+  <summary>Configuration Info (Click to expand) </summary>
 
-<p><strong>Configuration Info</strong>: Loading the configuration information from the input configuration YAML file. It is done using the <em>ConfReader</em> tool from the biobb_common configuration library:  </p>
+* **Configuration Info**: Loading the configuration information from the input configuration YAML file. It is done using the *ConfReader* tool from the biobb_common configuration library:  
 
-<p><strong>conf = settings.ConfReader(config)</strong>, where <strong>config</strong> is:</p>
+**conf = settings.ConfReader(config)**, where **config** is:
 
-    <p><blockquote><strong>config (str): Path to the configuration YAML file.</strong></blockquote></p>
+    - config (str): Path to the configuration YAML file.
 
-<p>Example:</p>
+Example:
 
-   <p><pre><strong>conf = settings.ConfReader("input_config_file")</strong></pre></p>
+   > **conf = settings.ConfReader("input_config_file")**
 
-<p><em>Configuration information read from the file "input_config_file".</em></p>
-
-<br/>
-
-</details><details>
-  <summary style="cursor:pointer;">Global Properties (Click to expand) </summary>
-
-<p><strong>Global properties</strong>: Collection of properties (tool parameters) for every step of the workflow extracted from the <strong>Configuration Info</strong>. It is generated using the <em>get_prop_dic</em> tool from the biobb_common configuration library:</p>
-
-<p><strong>global_prop = conf.get_prop_dic(params)</strong>, where <strong>params</strong> could be:</p>
-
-    <p><pre>- prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure. 
-- global_log (Logger object): Log from the main workflow.</pre></p>
-
-<p>Example:</p>
-
-   <p><blockquote><strong>global_prop = conf.get_prop_dic(global_log=global_log)</strong></blockquote></p>
-
-<p>* global_prop variable contains all the properties for all the workflow steps, parsed from the input configuration file. As the global_log is passed as input, local logs from all the steps will be appended to the global log.  </p> 
+*Configuration information read from the file "input_config_file".*
 
 <br/>
 
 </details><details>
-  <summary style="cursor:pointer;">Global Paths (Click to expand) </summary>
+  <summary>Global Properties (Click to expand) </summary>
 
-<p><strong>Global paths</strong>: Collection of paths (tool inputs & outputs) for every step of the workflow extracted from the <strong>Configuration Info</strong>. It is generated using the <em>get_paths_dic</em> tool from the biobb_common configuration library:</p>
+* **Global properties**: Collection of properties (tool parameters) for every step of the workflow extracted from the **Configuration Info**. It is generated using the *get_prop_dic* tool from the biobb_common configuration library:
 
-<p><strong>global_paths = conf.get_paths_dic(params)</strong>, where <strong>params</strong> could be:</p>
+**global_prop = conf.get_prop_dic(params)**, where **params** could be:
 
-    <p><pre>- prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure.</pre></p>
+    - prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure. 
+    - global_log (Logger object): Log from the main workflow.
 
-<p>Example:</p>
+Example:
 
-   <p><blockquote><strong>global_paths = conf.get_paths_dic()</strong></blockquote></p>
+   > **global_prop = conf.get_prop_dic(global_log=global_log)**
+*global_prop variable contains all the properties for all the workflow steps, parsed from the input configuration file. As the global_log is passed as input, local logs from all the steps will be appended to the global log.   
+
+<br/>
+
+</details><details>
+  <summary>Global Paths (Click to expand) </summary>
+
+
+* **Global paths**: Collection of paths (tool inputs & outputs) for every step of the workflow extracted from the **Configuration Info**. It is generated using the *get_paths_dic* tool from the biobb_common configuration library:
+
+**global_paths = conf.get_paths_dic(params)**, where **params** could be:
+
+    - prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure.
+
+Example:
+
+   > **global_paths = conf.get_paths_dic()**
+
+<br/>
 
 </details><p>Optionally, a <strong>Global Log</strong> could be initialized, capturing <strong>log information</strong> for the <strong>whole workflow</strong>.</p>
 <ul>
 <li><strong>Global log files</strong> (output log and error log). </li>
 </ul>
 <details>
-  <summary style="cursor:pointer;">Global Log (Click to expand) </summary>
+  <summary>Global Log (Click to expand) </summary>
 
-<p><strong>Global Log</strong>: Name of the file that will contain the <strong>global log of the workflow</strong> execution. Usually <strong>created only once</strong> at the beginning of the workflow. It is generated using the <em>get_logs</em> tool from the biobb_common file_utils library:</p>
+* **Global Log**: Name of the file that will contain the **global log of the workflow** execution. Usually **created only once** at the beginning of the workflow. It is generated using the *get_logs* tool from the biobb_common file_utils library:  
 
-<p><strong>global_log_out, global_log_err = file_utils.get_logs(params)</strong>, where <strong>params</strong> could be:</p>
+**global_log_out, global_log_err = file_utils.get_logs(params)**, where **params** could be:
 
-    <p><pre>- path (str): Path to the log file directory. By default assigned to the current working directory.
-- prefix (str): Prefix added to the name of the log file. By default log.out and log.err.
-- step (str): String added between the prefix and the name of the log file. 
-- can_write_console (bool): If True, show log in the execution terminal. False by default.
-- level (str): Set Logging level. [‘CRITICAL’,’ERROR’,’WARNING’,’INFO’,’DEBUG’,’NOTSET’]. INFO by default.
-- light_format (bool): Minimalist log format. False by default.</pre></p>
+    - path (str): Path to the log file directory. By default assigned to the current working directory.
+    - prefix (str): Prefix added to the name of the log file. By default log.out and log.err.
+    - step (str): String added between the prefix and the name of the log file. 
+    - can_write_console (bool): If True, show log in the execution terminal. False by default.
+    - level (str): Set Logging level. [‘CRITICAL’,’ERROR’,’WARNING’,’INFO’,’DEBUG’,’NOTSET’]. INFO by default.
+    - light_format (bool): Minimalist log format. False by default.
 
-<p>Example:</p>
+Example:
 
-   <p><blockquote><strong>log_out,log_err = file_utils.get_logs(path='/home/biobb/wf_example/', prefix='tutorial', level='WARNING')</strong></blockquote></p>
+   > **log_out,log_err = file_utils.get_logs(path='/home/biobb/wf_example/', prefix='tutorial', level='WARNING')**
 
-<p><em>Log file directory written to the '/home/biobb/wf_example/' working dir path (path), with level of logging set to 'WARNING' (level). The names of the log files will be tutorial_log.out and tutorial_log.err (prefix).</em></p>
+*Log file directory written to the '/home/biobb/wf_example/' working dir path (path), with level of logging set to 'WARNING' (level). The names of the log files will be tutorial_log.out and tutorial_log.err (prefix).*
 
 <br/>
 

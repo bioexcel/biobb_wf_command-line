@@ -31,7 +31,7 @@ This tutorial aims to illustrate the process of **building up a command-line wor
 
 
 ***
-![](_static/bioexcel_logo.png)
+![](logo.png)
 ***
 
 
@@ -190,48 +190,44 @@ The **YAML configuration file** that contains all the **workflow input parameter
     * *remove_tmp*: Remove temporary files after execution. 
     * *restart*: Skip already computed steps. Automatically detects already computed steps checking existence of output files. Useful in long executions that didn't reach the end for whatever reason.  
 
-Example of **Global Workflow Properties**:
+    Example of **Global Workflow Properties**:
 
+    ```yaml
+    # YAML configuration input file concepts: Global Workflow Properties
 
-```python
-# YAML configuration input file concepts: Global Workflow Properties
-
-working_dir_path: md_tutorial     # Folder to write i/o files of the workflow steps
-can_write_console_log: False      # Verbose writing of log information
-remove_tmp: True                  # Remove temporary files after execution
-restart: True                     # Skip steps already performed
-```
-
-
+    working_dir_path: md_tutorial     # Folder to write i/o files of the workflow steps
+    can_write_console_log: False      # Verbose writing of log information
+    remove_tmp: True                  # Remove temporary files after execution
+    restart: True                     # Skip steps already performed
+    ```
 2. **Workflow Steps**: Independent **properties** applied to **each single step** of the workflow, defined **one by one**. Usually, there should be at least as many steps definitions as steps defined in the **Python workflow**. The name of the step is used in the Python workflow script to **identify input/output files and properties** for the corresponding workflow step. **Workflow Steps** definitions are divided in **two fields**:    
     
     * **Paths**: **Inputs** and **Outputs** of the **building blocks**. Defined as **file names** with relative or absolute paths, or as **dependencies** from output files coming from **previous steps of the workflow**. If a step needs (as input) an output from a previous step, a dependency should be specified. Dependencies syntax is defined as: *dependency/previous_step_name/previous_step_output_name* (see example below).  
     
     * **Properties**: **Configuration parameter** (properties) of the **building blocks**. Specific input parameters for the particular building block, always defined inside a *properties* field. 
     
-Example of **Workflow Steps**:
+    Example of **Workflow Steps**:
 
+    ```yaml
+    # Configuration input file concepts: Workflow Steps
 
-```python
-# Configuration input file concepts: Workflow Steps
+    # Step 1: Downloading PDB 1AKI and saving it to the "structure.pdb" file
+    step1_pdb:
+      paths:
+        output_pdb_path: structure.pdb
+      properties:
+        pdb_code: 1aki
 
-# Step 1: Downloading PDB 1AKI and saving it to the "structure.pdb" file
-step1_pdb:
-  paths:
-    output_pdb_path: structure.pdb
-  properties:
-    pdb_code: 1aki
-        
-# Step 2: Fixing side chains of the structure and saving it to the "fixsidechain.pdb" file
-# Input structure (input_pdb_path) is defined as a dependency from the
-# output_pdb_path of the previous step1_pdb step (dependency/step1_pdb/output_pdb_path)        
-step2_fixsidechain:
-  paths:
-    input_pdb_path: dependency/step1_pdb/output_pdb_path
-    output_pdb_path: fixsidechain.pdb
-```
+    # Step 2: Fixing side chains of the structure and saving it to the "fixsidechain.pdb" file
+    # Input structure (input_pdb_path) is defined as a dependency from the
+    # output_pdb_path of the previous step1_pdb step (dependency/step1_pdb/output_pdb_path)        
+    step2_fixsidechain:
+      paths:
+        input_pdb_path: dependency/step1_pdb/output_pdb_path
+        output_pdb_path: fixsidechain.pdb
+    ```
 
-**Paths and properties** for each of the **building blocks** available in the **biobb library** can be found in the corresponding **module documentation pages**. Please visit http://mmb.irbbarcelona.org/biobb/availability/source to quickly find links to the desired **module documentation**.    
+**Paths and properties** for each of the **building blocks** available in the **biobb library** can be found in the corresponding **module documentation pages**. Please visit https://mmb.irbbarcelona.org/biobb/availability/source to quickly find links to the desired **module documentation**.    
 
 Each **building block** has its own set of specific properties (parameters). However, there is a list of properties that are **common** to most of the **building blocks**. Those are the **Common Step Properties** that can be added to any of the **BioExcel building blocks**:
 
@@ -250,8 +246,7 @@ There is also a list of **common properties** for all the **container-compatible
    
 Example of **Workflow Steps** with **container Common Properties**, taken from the [Mutation free energy calculations](http://mmb.irbbarcelona.org/biobb/availability/tutorials/pmx) tutorial:    
 
-
-```python
+```yaml
 # Configuration input file concepts: Common Step Properties
 
 # Step 1: Modelling mutated structure with the desired new residue (Isoleucine 10 to Alanine) using pmx package.
@@ -395,8 +390,7 @@ FixSideChain(**conf_inputs["step2_fixsidechain"], properties=conf_properties["st
 
 The **YAML configuration file** containing the **input parameters** for this example includes the **paths** and **properties** of the two first steps of the **Protein MD Setup** workflow:
 
-
-```python
+```yaml
 # Step 1: Downloading PDB 1AKI and saving it to the "structure.pdb" file
 step1_pdb:
   paths:
@@ -422,8 +416,7 @@ It is important to note that in order to properly run the workflow, all the **Bi
 
 The **command line** is shown in the cell below:
 
-
-```python
+```
 python biobb_MDsetup_tutorial-lite.py biobb_MDsetup_tutorial-lite.yaml 
 ```
 
@@ -650,8 +643,7 @@ For **each step**, the **properties** section contains the list of **building bl
 
 The **input paths** and **parameters** for the **Protein MD Setup Jupyter Notebook tutorial** converted to an independent **Input YAML Configuration file** follows: 
 
-
-```python
+```yaml
 # Example of a YAML configuration file for a BioExcel building blocks workflow
 
 working_dir_path: md_tutorial     # Folder to write i/o files of the workflow steps
@@ -858,8 +850,7 @@ As in the previous example, it is important to note that in order to **properly 
 
 The final **command line** is shown in the cell below:
 
-
-```python
+```
 python biobb_MDsetup_tutorial.py biobb_MDsetup_tutorial.yaml
 ```
 

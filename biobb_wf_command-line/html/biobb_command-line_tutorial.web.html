@@ -13161,78 +13161,76 @@ div#notebook {
 <li><strong>Properties and parameters</strong> (global_prop, global_paths) for all the different steps of the workflow, parsed from the configuration info.</li>
 </ul>
 <details>
-  <summary>Configuration Info (Click to expand) </summary>
+  <summary style="cursor:pointer;">Configuration Info (Click to expand) </summary>
 
-* **Configuration Info**: Loading the configuration information from the input configuration YAML file. It is done using the *ConfReader* tool from the biobb_common configuration library:  
+<p><strong>Configuration Info</strong>: Loading the configuration information from the input configuration YAML file. It is done using the <em>ConfReader</em> tool from the biobb_common configuration library:  </p>
 
-**conf = settings.ConfReader(config)**, where **config** is:
+<p><strong>conf = settings.ConfReader(config)</strong>, where <strong>config</strong> is:</p>
 
-    - config (str): Path to the configuration YAML file.
+    <p><blockquote><strong>config (str): Path to the configuration YAML file.</strong></blockquote></p>
 
-Example:
+<p>Example:</p>
 
-   > **conf = settings.ConfReader("input_config_file")**
+   <p><pre><strong>conf = settings.ConfReader("input_config_file")</strong></pre></p>
 
-*Configuration information read from the file "input_config_file".*
-
-<br/>
-
-</details><details>
-  <summary>Global Properties (Click to expand) </summary>
-
-* **Global properties**: Collection of properties (tool parameters) for every step of the workflow extracted from the **Configuration Info**. It is generated using the *get_prop_dic* tool from the biobb_common configuration library:
-
-**global_prop = conf.get_prop_dic(params)**, where **params** could be:
-
-    - prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure. 
-    - global_log (Logger object): Log from the main workflow.
-
-Example:
-
-   > **global_prop = conf.get_prop_dic(global_log=global_log)**
-*global_prop variable contains all the properties for all the workflow steps, parsed from the input configuration file. As the global_log is passed as input, local logs from all the steps will be appended to the global log.   
+<p><em>Configuration information read from the file "input_config_file".</em></p>
 
 <br/>
 
 </details><details>
-  <summary>Global Paths (Click to expand) </summary>
+  <summary style="cursor:pointer;">Global Properties (Click to expand) </summary>
 
+<p><strong>Global properties</strong>: Collection of properties (tool parameters) for every step of the workflow extracted from the <strong>Configuration Info</strong>. It is generated using the <em>get_prop_dic</em> tool from the biobb_common configuration library:</p>
 
-* **Global paths**: Collection of paths (tool inputs & outputs) for every step of the workflow extracted from the **Configuration Info**. It is generated using the *get_paths_dic* tool from the biobb_common configuration library:
+<p><strong>global_prop = conf.get_prop_dic(params)</strong>, where <strong>params</strong> could be:</p>
 
-**global_paths = conf.get_paths_dic(params)**, where **params** could be:
+    <p><pre>- prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure. 
+- global_log (Logger object): Log from the main workflow.</pre></p>
 
-    - prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure.
+<p>Example:</p>
 
-Example:
+   <p><blockquote><strong>global_prop = conf.get_prop_dic(global_log=global_log)</strong></blockquote></p>
 
-   > **global_paths = conf.get_paths_dic()**
+<p>* global_prop variable contains all the properties for all the workflow steps, parsed from the input configuration file. As the global_log is passed as input, local logs from all the steps will be appended to the global log.  </p> 
 
 <br/>
+
+</details><details>
+  <summary style="cursor:pointer;">Global Paths (Click to expand) </summary>
+
+<p><strong>Global paths</strong>: Collection of paths (tool inputs & outputs) for every step of the workflow extracted from the <strong>Configuration Info</strong>. It is generated using the <em>get_paths_dic</em> tool from the biobb_common configuration library:</p>
+
+<p><strong>global_paths = conf.get_paths_dic(params)</strong>, where <strong>params</strong> could be:</p>
+
+    <p><pre>- prefix (str): Prefix if provided. Prefix is used to add levels of hierarchy in the workflow structure.</pre></p>
+
+<p>Example:</p>
+
+   <p><blockquote><strong>global_paths = conf.get_paths_dic()</strong></blockquote></p>
 
 </details><p>Optionally, a <strong>Global Log</strong> could be initialized, capturing <strong>log information</strong> for the <strong>whole workflow</strong>.</p>
 <ul>
 <li><strong>Global log files</strong> (output log and error log). </li>
 </ul>
 <details>
-  <summary>Global Log (Click to expand) </summary>
+  <summary style="cursor:pointer;">Global Log (Click to expand) </summary>
 
-* **Global Log**: Name of the file that will contain the **global log of the workflow** execution. Usually **created only once** at the beginning of the workflow. It is generated using the *get_logs* tool from the biobb_common file_utils library:  
+<p><strong>Global Log</strong>: Name of the file that will contain the <strong>global log of the workflow</strong> execution. Usually <strong>created only once</strong> at the beginning of the workflow. It is generated using the <em>get_logs</em> tool from the biobb_common file_utils library:</p>
 
-**global_log_out, global_log_err = file_utils.get_logs(params)**, where **params** could be:
+<p><strong>global_log_out, global_log_err = file_utils.get_logs(params)</strong>, where <strong>params</strong> could be:</p>
 
-    - path (str): Path to the log file directory. By default assigned to the current working directory.
-    - prefix (str): Prefix added to the name of the log file. By default log.out and log.err.
-    - step (str): String added between the prefix and the name of the log file. 
-    - can_write_console (bool): If True, show log in the execution terminal. False by default.
-    - level (str): Set Logging level. [‘CRITICAL’,’ERROR’,’WARNING’,’INFO’,’DEBUG’,’NOTSET’]. INFO by default.
-    - light_format (bool): Minimalist log format. False by default.
+    <p><pre>- path (str): Path to the log file directory. By default assigned to the current working directory.
+- prefix (str): Prefix added to the name of the log file. By default log.out and log.err.
+- step (str): String added between the prefix and the name of the log file. 
+- can_write_console (bool): If True, show log in the execution terminal. False by default.
+- level (str): Set Logging level. [‘CRITICAL’,’ERROR’,’WARNING’,’INFO’,’DEBUG’,’NOTSET’]. INFO by default.
+- light_format (bool): Minimalist log format. False by default.</pre></p>
 
-Example:
+<p>Example:</p>
 
-   > **log_out,log_err = file_utils.get_logs(path='/home/biobb/wf_example/', prefix='tutorial', level='WARNING')**
+   <p><blockquote><strong>log_out,log_err = file_utils.get_logs(path='/home/biobb/wf_example/', prefix='tutorial', level='WARNING')</strong></blockquote></p>
 
-*Log file directory written to the '/home/biobb/wf_example/' working dir path (path), with level of logging set to 'WARNING' (level). The names of the log files will be tutorial_log.out and tutorial_log.err (prefix).*
+<p><em>Log file directory written to the '/home/biobb/wf_example/' working dir path (path), with level of logging set to 'WARNING' (level). The names of the log files will be tutorial_log.out and tutorial_log.err (prefix).</em></p>
 
 <br/>
 
@@ -13275,83 +13273,53 @@ Example:
 <li><em>working_dir_path</em>: Workflow output directory, where all results are going to be written.</li>
 <li><em>can_write_console_log</em>: Enable the automatic output of the information log to the console.</li>
 <li><em>remove_tmp</em>: Remove temporary files after execution. </li>
-<li><em>restart</em>: Skip already computed steps. Automatically detects already computed steps checking existence of output files. Useful in long executions that didn't reach the end for whatever reason.  </li>
+<li><p><em>restart</em>: Skip already computed steps. Automatically detects already computed steps checking existence of output files. Useful in long executions that didn't reach the end for whatever reason.</p>
+<p>Example of <strong>Global Workflow Properties</strong>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># YAML configuration input file concepts: Global Workflow Properties</span>
+
+<span class="nt">working_dir_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md_tutorial</span>     <span class="c1"># Folder to write i/o files of the workflow steps</span>
+<span class="nt">can_write_console_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>      <span class="c1"># Verbose writing of log information</span>
+<span class="nt">remove_tmp</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>                  <span class="c1"># Remove temporary files after execution</span>
+<span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>                     <span class="c1"># Skip steps already performed</span>
+</pre></div>
+</li>
 </ul>
 </li>
-</ol>
-<p>Example of <strong>Global Workflow Properties</strong>:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># YAML configuration input file concepts: Global Workflow Properties</span>
-
-<span class="n">working_dir_path</span><span class="p">:</span> <span class="n">md_tutorial</span>     <span class="c1"># Folder to write i/o files of the workflow steps</span>
-<span class="n">can_write_console_log</span><span class="p">:</span> <span class="kc">False</span>      <span class="c1"># Verbose writing of log information</span>
-<span class="n">remove_tmp</span><span class="p">:</span> <span class="kc">True</span>                  <span class="c1"># Remove temporary files after execution</span>
-<span class="n">restart</span><span class="p">:</span> <span class="kc">True</span>                     <span class="c1"># Skip steps already performed</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ol>
 <li><p><strong>Workflow Steps</strong>: Independent <strong>properties</strong> applied to <strong>each single step</strong> of the workflow, defined <strong>one by one</strong>. Usually, there should be at least as many steps definitions as steps defined in the <strong>Python workflow</strong>. The name of the step is used in the Python workflow script to <strong>identify input/output files and properties</strong> for the corresponding workflow step. <strong>Workflow Steps</strong> definitions are divided in <strong>two fields</strong>:</p>
 <ul>
 <li><p><strong>Paths</strong>: <strong>Inputs</strong> and <strong>Outputs</strong> of the <strong>building blocks</strong>. Defined as <strong>file names</strong> with relative or absolute paths, or as <strong>dependencies</strong> from output files coming from <strong>previous steps of the workflow</strong>. If a step needs (as input) an output from a previous step, a dependency should be specified. Dependencies syntax is defined as: <em>dependency/previous_step_name/previous_step_output_name</em> (see example below).</p>
 </li>
 <li><p><strong>Properties</strong>: <strong>Configuration parameter</strong> (properties) of the <strong>building blocks</strong>. Specific input parameters for the particular building block, always defined inside a <em>properties</em> field.</p>
+<p>Example of <strong>Workflow Steps</strong>:</p>
+<div class="highlight"><pre><span></span><span class="c1"># Configuration input file concepts: Workflow Steps</span>
+
+<span class="c1"># Step 1: Downloading PDB 1AKI and saving it to the &quot;structure.pdb&quot; file</span>
+<span class="nt">step1_pdb</span><span class="p">:</span>
+<span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.pdb</span>
+<span class="nt">properties</span><span class="p">:</span>
+  <span class="nt">pdb_code</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1aki</span>
+
+<span class="c1"># Step 2: Fixing side chains of the structure and saving it to the &quot;fixsidechain.pdb&quot; file</span>
+<span class="c1"># Input structure (input_pdb_path) is defined as a dependency from the</span>
+<span class="c1"># output_pdb_path of the previous step1_pdb step (dependency/step1_pdb/output_pdb_path)        </span>
+<span class="nt">step2_fixsidechain</span><span class="p">:</span>
+<span class="nt">paths</span><span class="p">:</span>
+  <span class="nt">input_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step1_pdb/output_pdb_path</span>
+  <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fixsidechain.pdb</span>
+</pre></div>
 </li>
 </ul>
 </li>
 </ol>
-<p>Example of <strong>Workflow Steps</strong>:</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Configuration input file concepts: Workflow Steps</span>
-
-<span class="c1"># Step 1: Downloading PDB 1AKI and saving it to the &quot;structure.pdb&quot; file</span>
-<span class="n">step1_pdb</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">structure</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">pdb_code</span><span class="p">:</span> <span class="mi">1</span><span class="n">aki</span>
-        
-<span class="c1"># Step 2: Fixing side chains of the structure and saving it to the &quot;fixsidechain.pdb&quot; file</span>
-<span class="c1"># Input structure (input_pdb_path) is defined as a dependency from the</span>
-<span class="c1"># output_pdb_path of the previous step1_pdb step (dependency/step1_pdb/output_pdb_path)        </span>
-<span class="n">step2_fixsidechain</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_pdb_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step1_pdb</span><span class="o">/</span><span class="n">output_pdb_path</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">fixsidechain</span><span class="o">.</span><span class="n">pdb</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Paths and properties</strong> for each of the <strong>building blocks</strong> available in the <strong>biobb library</strong> can be found in the corresponding <strong>module documentation pages</strong>. Please visit <a href="http://mmb.irbbarcelona.org/biobb/availability/source">http://mmb.irbbarcelona.org/biobb/availability/source</a> to quickly find links to the desired <strong>module documentation</strong>.</p>
+<p><strong>Paths and properties</strong> for each of the <strong>building blocks</strong> available in the <strong>biobb library</strong> can be found in the corresponding <strong>module documentation pages</strong>. Please visit <a href="https://mmb.irbbarcelona.org/biobb/availability/source">https://mmb.irbbarcelona.org/biobb/availability/source</a> to quickly find links to the desired <strong>module documentation</strong>.</p>
 <p>Each <strong>building block</strong> has its own set of specific properties (parameters). However, there is a list of properties that are <strong>common</strong> to most of the <strong>building blocks</strong>. Those are the <strong>Common Step Properties</strong> that can be added to any of the <strong>BioExcel building blocks</strong>:</p>
 <ul>
 <li><em>can_write_console_log</em>: Overwrite can_write_console_log workflow property on this step.</li>
@@ -13372,28 +13340,24 @@ Example:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Configuration input file concepts: Common Step Properties</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># Configuration input file concepts: Common Step Properties</span>
 
 <span class="c1"># Step 1: Modelling mutated structure with the desired new residue (Isoleucine 10 to Alanine) using pmx package.</span>
-<span class="n">step1_pmx_mutate</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">output_structure_path</span><span class="p">:</span> <span class="n">mut</span><span class="o">.</span><span class="n">gro</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mutation_list</span> <span class="p">:</span> <span class="n">Ile10Ala</span>
-    <span class="n">force_field</span><span class="p">:</span> <span class="n">amber99sb</span><span class="o">-</span><span class="n">star</span><span class="o">-</span><span class="n">ildn</span><span class="o">-</span><span class="n">mut</span>
-    <span class="n">container_path</span><span class="p">:</span> <span class="n">singularity</span>
-    <span class="n">container_image</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">group</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">singularities</span><span class="o">/</span><span class="n">pmx_standalone</span><span class="o">.</span><span class="n">sif</span>
+<span class="nt">step1_pmx_mutate</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">output_structure_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mut.gro</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mutation_list </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ile10Ala</span>
+    <span class="nt">force_field</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">amber99sb-star-ildn-mut</span>
+    <span class="nt">container_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">singularity</span>
+    <span class="nt">container_image</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/group/user/singularities/pmx_standalone.sif</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13594,31 +13558,27 @@ Example:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Step 1: Downloading PDB 1AKI and saving it to the &quot;structure.pdb&quot; file</span>
-<span class="n">step1_pdb</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">structure</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">pdb_code</span><span class="p">:</span> <span class="mi">1</span><span class="n">aki</span>
-        
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># Step 1: Downloading PDB 1AKI and saving it to the &quot;structure.pdb&quot; file</span>
+<span class="nt">step1_pdb</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.pdb</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">pdb_code</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1aki</span>
+
 <span class="c1"># Step 2: Fixing side chains of the structure and saving it to the &quot;fixsidechain.pdb&quot; file</span>
 <span class="c1"># Input structure (input_pdb_path) is defined as a dependency from the</span>
 <span class="c1"># output_pdb_path of the previous step1_pdb step (dependency/step1_pdb/output_pdb_path)        </span>
-<span class="n">step2_fixsidechain</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_pdb_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step1_pdb</span><span class="o">/</span><span class="n">output_pdb_path</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">fixsidechain</span><span class="o">.</span><span class="n">pdb</span>
+<span class="nt">step2_fixsidechain</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step1_pdb/output_pdb_path</span>
+    <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fixsidechain.pdb</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13630,18 +13590,14 @@ Example:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">python</span> <span class="n">biobb_MDsetup_tutorial</span><span class="o">-</span><span class="n">lite</span><span class="o">.</span><span class="n">py</span> <span class="n">biobb_MDsetup_tutorial</span><span class="o">-</span><span class="n">lite</span><span class="o">.</span><span class="n">yaml</span> 
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 
-    </div>
+<pre><code>python biobb_MDsetup_tutorial-lite.py biobb_MDsetup_tutorial-lite.yaml</code></pre>
+
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13881,213 +13837,209 @@ Example:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Example of a YAML configuration file for a BioExcel building blocks workflow</span>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="highlight"><pre><span></span><span class="c1"># Example of a YAML configuration file for a BioExcel building blocks workflow</span>
 
-<span class="n">working_dir_path</span><span class="p">:</span> <span class="n">md_tutorial</span>     <span class="c1"># Folder to write i/o files of the workflow steps</span>
-<span class="n">can_write_console_log</span><span class="p">:</span> <span class="kc">False</span>      <span class="c1"># Verbose writing of log information</span>
-<span class="n">restart</span><span class="p">:</span> <span class="kc">True</span>                     <span class="c1"># Skip steps already performed</span>
+<span class="nt">working_dir_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md_tutorial</span>     <span class="c1"># Folder to write i/o files of the workflow steps</span>
+<span class="nt">can_write_console_log</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>      <span class="c1"># Verbose writing of log information</span>
+<span class="nt">restart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>                     <span class="c1"># Skip steps already performed</span>
 
-<span class="n">step1_pdb</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">structure</span><span class="o">.</span><span class="n">pdb</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">pdb_code</span><span class="p">:</span> <span class="mi">1</span><span class="n">aki</span>
+<span class="nt">step1_pdb</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">structure.pdb</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">pdb_code</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1aki</span>
 
-<span class="n">step2_fixsidechain</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_pdb_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step1_pdb</span><span class="o">/</span><span class="n">output_pdb_path</span>
-    <span class="n">output_pdb_path</span><span class="p">:</span> <span class="n">fixsidechain</span><span class="o">.</span><span class="n">pdb</span>
+<span class="nt">step2_fixsidechain</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step1_pdb/output_pdb_path</span>
+    <span class="nt">output_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">fixsidechain.pdb</span>
 
-<span class="n">step3_pdb2gmx</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_pdb_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step2_fixsidechain</span><span class="o">/</span><span class="n">output_pdb_path</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">pdb2gmx</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">output_top_zip_path</span><span class="p">:</span> <span class="n">pdb2gmx_top</span><span class="o">.</span><span class="n">zip</span>
+<span class="nt">step3_pdb2gmx</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_pdb_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step2_fixsidechain/output_pdb_path</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pdb2gmx.gro</span>
+    <span class="nt">output_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">pdb2gmx_top.zip</span>
 
-<span class="n">step4_editconf</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step3_pdb2gmx</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">editconf</span><span class="o">.</span><span class="n">gro</span>
+<span class="nt">step4_editconf</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step3_pdb2gmx/output_gro_path</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">editconf.gro</span>
 
-<span class="n">step5_solvate</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_solute_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step4_editconf</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">solvate</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step3_pdb2gmx</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_top_zip_path</span><span class="p">:</span> <span class="n">solvate_top</span><span class="o">.</span><span class="n">zip</span>
+<span class="nt">step5_solvate</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_solute_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step4_editconf/output_gro_path</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">solvate.gro</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step3_pdb2gmx/output_top_zip_path</span>
+    <span class="nt">output_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">solvate_top.zip</span>
 
-<span class="n">step6_grompp_genion</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step5_solvate</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step5_solvate</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_tpr_path</span><span class="p">:</span> <span class="n">gppion</span><span class="o">.</span><span class="n">tpr</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mdp</span><span class="p">:</span>
-      <span class="nb">type</span><span class="p">:</span> <span class="n">minimization</span>
-      <span class="n">nsteps</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="nt">step6_grompp_genion</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step5_solvate/output_gro_path</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step5_solvate/output_top_zip_path</span>
+    <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppion.tpr</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mdp</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
+      <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
 
-<span class="n">step7_genion</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_tpr_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step6_grompp_genion</span><span class="o">/</span><span class="n">output_tpr_path</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">genion</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step5_solvate</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_top_zip_path</span><span class="p">:</span> <span class="n">genion_top</span><span class="o">.</span><span class="n">zip</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">neutral</span><span class="p">:</span> <span class="kc">True</span>
-    <span class="n">concentration</span><span class="p">:</span> <span class="mf">0.05</span>
+<span class="nt">step7_genion</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step6_grompp_genion/output_tpr_path</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">genion.gro</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step5_solvate/output_top_zip_path</span>
+    <span class="nt">output_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">genion_top.zip</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">neutral</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="nt">concentration</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.05</span>
 
-<span class="n">step8_grompp_min</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step7_genion</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step7_genion</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_tpr_path</span><span class="p">:</span> <span class="n">gppmin</span><span class="o">.</span><span class="n">tpr</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mdp</span><span class="p">:</span>
-      <span class="nb">type</span><span class="p">:</span> <span class="n">minimization</span>
-      <span class="n">nsteps</span><span class="p">:</span> <span class="mi">5000</span>
-      <span class="n">emtol</span><span class="p">:</span> <span class="mi">500</span>
+<span class="nt">step8_grompp_min</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step7_genion/output_gro_path</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step7_genion/output_top_zip_path</span>
+    <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppmin.tpr</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mdp</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
+      <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+      <span class="nt">emtol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">500</span>
 
-<span class="n">step9_mdrun_min</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_tpr_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step8_grompp_min</span><span class="o">/</span><span class="n">output_tpr_path</span>
-    <span class="n">output_trr_path</span><span class="p">:</span> <span class="nb">min</span><span class="o">.</span><span class="n">trr</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="nb">min</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">output_edr_path</span><span class="p">:</span> <span class="nb">min</span><span class="o">.</span><span class="n">edr</span>
-    <span class="n">output_log_path</span><span class="p">:</span> <span class="nb">min</span><span class="o">.</span><span class="n">log</span>
+<span class="nt">step9_mdrun_min</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step8_grompp_min/output_tpr_path</span>
+    <span class="nt">output_trr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">min.trr</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">min.gro</span>
+    <span class="nt">output_edr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">min.edr</span>
+    <span class="nt">output_log_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">min.log</span>
 
-<span class="n">step10_energy_min</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_energy_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step9_mdrun_min</span><span class="o">/</span><span class="n">output_edr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">min_ene</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">terms</span><span class="p">:</span>  <span class="p">[</span><span class="s2">&quot;Potential&quot;</span><span class="p">]</span>
+<span class="nt">step10_energy_min</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_energy_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step9_mdrun_min/output_edr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">min_ene.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">terms</span><span class="p">:</span>  <span class="p p-Indicator">[</span><span class="s">&quot;Potential&quot;</span><span class="p p-Indicator">]</span>
 
-<span class="n">step11_grompp_nvt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step9_mdrun_min</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step7_genion</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_tpr_path</span><span class="p">:</span> <span class="n">gppnvt</span><span class="o">.</span><span class="n">tpr</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mdp</span><span class="p">:</span>
-      <span class="nb">type</span><span class="p">:</span> <span class="n">nvt</span>
-      <span class="n">nsteps</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="nt">step11_grompp_nvt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step9_mdrun_min/output_gro_path</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step7_genion/output_top_zip_path</span>
+    <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppnvt.tpr</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mdp</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt</span>
+      <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
 
-<span class="n">step12_mdrun_nvt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_tpr_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step11_grompp_nvt</span><span class="o">/</span><span class="n">output_tpr_path</span>
-    <span class="n">output_trr_path</span><span class="p">:</span> <span class="n">nvt</span><span class="o">.</span><span class="n">trr</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">nvt</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">output_edr_path</span><span class="p">:</span> <span class="n">nvt</span><span class="o">.</span><span class="n">edr</span>
-    <span class="n">output_log_path</span><span class="p">:</span> <span class="n">nvt</span><span class="o">.</span><span class="n">log</span>
-    <span class="n">output_cpt_path</span><span class="p">:</span> <span class="n">nvt</span><span class="o">.</span><span class="n">cpt</span>
+<span class="nt">step12_mdrun_nvt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step11_grompp_nvt/output_tpr_path</span>
+    <span class="nt">output_trr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt.trr</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt.gro</span>
+    <span class="nt">output_edr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt.edr</span>
+    <span class="nt">output_log_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt.log</span>
+    <span class="nt">output_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt.cpt</span>
 
-<span class="n">step13_energy_nvt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_energy_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step12_mdrun_nvt</span><span class="o">/</span><span class="n">output_edr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">nvt_temp</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">terms</span><span class="p">:</span>  <span class="p">[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">]</span>
+<span class="nt">step13_energy_nvt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_energy_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step12_mdrun_nvt/output_edr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt_temp.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">terms</span><span class="p">:</span>  <span class="p p-Indicator">[</span><span class="s">&quot;Temperature&quot;</span><span class="p p-Indicator">]</span>
 
-<span class="n">step14_grompp_npt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step12_mdrun_nvt</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step7_genion</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_tpr_path</span><span class="p">:</span> <span class="n">gppnpt</span><span class="o">.</span><span class="n">tpr</span>
-    <span class="n">input_cpt_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step12_mdrun_nvt</span><span class="o">/</span><span class="n">output_cpt_path</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mdp</span><span class="p">:</span>
-      <span class="nb">type</span><span class="p">:</span> <span class="n">npt</span>
-      <span class="n">nsteps</span><span class="p">:</span> <span class="mi">5000</span>
+<span class="nt">step14_grompp_npt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step12_mdrun_nvt/output_gro_path</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step7_genion/output_top_zip_path</span>
+    <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppnpt.tpr</span>
+    <span class="nt">input_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step12_mdrun_nvt/output_cpt_path</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mdp</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt</span>
+      <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
 
-<span class="n">step15_mdrun_npt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_tpr_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step14_grompp_npt</span><span class="o">/</span><span class="n">output_tpr_path</span>
-    <span class="n">output_trr_path</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">trr</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">output_edr_path</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">edr</span>
-    <span class="n">output_log_path</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">log</span>
-    <span class="n">output_cpt_path</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">cpt</span>
+<span class="nt">step15_mdrun_npt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step14_grompp_npt/output_tpr_path</span>
+    <span class="nt">output_trr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt.trr</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt.gro</span>
+    <span class="nt">output_edr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt.edr</span>
+    <span class="nt">output_log_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt.log</span>
+    <span class="nt">output_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt.cpt</span>
 
-<span class="n">step16_energy_npt</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_energy_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step15_mdrun_npt</span><span class="o">/</span><span class="n">output_edr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">npt_den_press</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">terms</span><span class="p">:</span>  <span class="p">[</span><span class="s2">&quot;Pressure&quot;</span><span class="p">,</span><span class="s2">&quot;Density&quot;</span><span class="p">]</span>
+<span class="nt">step16_energy_npt</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_energy_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step15_mdrun_npt/output_edr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt_den_press.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">terms</span><span class="p">:</span>  <span class="p p-Indicator">[</span><span class="s">&quot;Pressure&quot;</span><span class="p p-Indicator">,</span><span class="s">&quot;Density&quot;</span><span class="p p-Indicator">]</span>
 
-<span class="n">step17_grompp_md</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_gro_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step15_mdrun_npt</span><span class="o">/</span><span class="n">output_gro_path</span>
-    <span class="n">input_top_zip_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step7_genion</span><span class="o">/</span><span class="n">output_top_zip_path</span>
-    <span class="n">output_tpr_path</span><span class="p">:</span> <span class="n">gppmd</span><span class="o">.</span><span class="n">tpr</span>
-    <span class="n">input_cpt_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step15_mdrun_npt</span><span class="o">/</span><span class="n">output_cpt_path</span>
-  <span class="n">properties</span><span class="p">:</span>
-    <span class="n">mdp</span><span class="p">:</span>
-      <span class="nb">type</span><span class="p">:</span> <span class="n">free</span>
-      <span class="n">nsteps</span><span class="p">:</span> <span class="mi">50000</span>
+<span class="nt">step17_grompp_md</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step15_mdrun_npt/output_gro_path</span>
+    <span class="nt">input_top_zip_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step7_genion/output_top_zip_path</span>
+    <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppmd.tpr</span>
+    <span class="nt">input_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step15_mdrun_npt/output_cpt_path</span>
+  <span class="nt">properties</span><span class="p">:</span>
+    <span class="nt">mdp</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">free</span>
+      <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50000</span>
 
-<span class="n">step18_mdrun_md</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-    <span class="n">input_tpr_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step17_grompp_md</span><span class="o">/</span><span class="n">output_tpr_path</span>
-    <span class="n">output_trr_path</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">trr</span>
-    <span class="n">output_gro_path</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">gro</span>
-    <span class="n">output_edr_path</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">edr</span>
-    <span class="n">output_log_path</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">log</span>
-    <span class="n">output_cpt_path</span><span class="p">:</span> <span class="n">md</span><span class="o">.</span><span class="n">cpt</span>
+<span class="nt">step18_mdrun_md</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+    <span class="nt">input_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step17_grompp_md/output_tpr_path</span>
+    <span class="nt">output_trr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md.trr</span>
+    <span class="nt">output_gro_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md.gro</span>
+    <span class="nt">output_edr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md.edr</span>
+    <span class="nt">output_log_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md.log</span>
+    <span class="nt">output_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md.cpt</span>
 
-<span class="n">step19_rmsfirst</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_structure_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step17_grompp_md</span><span class="o">/</span><span class="n">output_tpr_path</span>
-      <span class="n">input_traj_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step18_mdrun_md</span><span class="o">/</span><span class="n">output_trr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">md_rmsdfirst</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">selection</span><span class="p">:</span> <span class="n">Backbone</span>
+<span class="nt">step19_rmsfirst</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_structure_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step17_grompp_md/output_tpr_path</span>
+      <span class="nt">input_traj_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step18_mdrun_md/output_trr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md_rmsdfirst.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Backbone</span>
 
-<span class="n">step20_rmsexp</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_structure_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step8_grompp_min</span><span class="o">/</span><span class="n">output_tpr_path</span>
-      <span class="n">input_traj_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step18_mdrun_md</span><span class="o">/</span><span class="n">output_trr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">md_rmsdexp</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">selection</span><span class="p">:</span> <span class="n">Backbone</span>
+<span class="nt">step20_rmsexp</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_structure_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step8_grompp_min/output_tpr_path</span>
+      <span class="nt">input_traj_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step18_mdrun_md/output_trr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md_rmsdexp.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Backbone</span>
 
-<span class="n">step21_rgyr</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_structure_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step17_grompp_md</span><span class="o">/</span><span class="n">output_tpr_path</span>
-      <span class="n">input_traj_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step18_mdrun_md</span><span class="o">/</span><span class="n">output_trr_path</span>
-      <span class="n">output_xvg_path</span><span class="p">:</span> <span class="n">md_rgyr</span><span class="o">.</span><span class="n">xvg</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">selection</span><span class="p">:</span> <span class="n">Backbone</span>
+<span class="nt">step21_rgyr</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_structure_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step17_grompp_md/output_tpr_path</span>
+      <span class="nt">input_traj_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step18_mdrun_md/output_trr_path</span>
+      <span class="nt">output_xvg_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">md_rgyr.xvg</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Backbone</span>
 
-<span class="n">step22_image</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_traj_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step18_mdrun_md</span><span class="o">/</span><span class="n">output_trr_path</span>
-      <span class="n">input_top_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step17_grompp_md</span><span class="o">/</span><span class="n">output_tpr_path</span>
-      <span class="n">output_traj_path</span><span class="p">:</span> <span class="n">imaged_traj</span><span class="o">.</span><span class="n">trr</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">center_selection</span><span class="p">:</span> <span class="n">Protein</span>
-      <span class="n">output_selection</span><span class="p">:</span> <span class="n">Protein</span>
-      <span class="n">pbc</span><span class="p">:</span> <span class="n">mol</span>
-      <span class="n">center</span> <span class="p">:</span> <span class="kc">True</span>
+<span class="nt">step22_image</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_traj_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step18_mdrun_md/output_trr_path</span>
+      <span class="nt">input_top_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step17_grompp_md/output_tpr_path</span>
+      <span class="nt">output_traj_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">imaged_traj.trr</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">center_selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Protein</span>
+      <span class="nt">output_selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Protein</span>
+      <span class="nt">pbc</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">mol</span>
+      <span class="nt">center </span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 
-<span class="n">step23_dry</span><span class="p">:</span>
-  <span class="n">paths</span><span class="p">:</span>
-      <span class="n">input_structure_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step18_mdrun_md</span><span class="o">/</span><span class="n">output_gro_path</span>
-      <span class="n">input_top_path</span><span class="p">:</span> <span class="n">dependency</span><span class="o">/</span><span class="n">step17_grompp_md</span><span class="o">/</span><span class="n">output_tpr_path</span>
-      <span class="n">output_str_path</span><span class="p">:</span> <span class="n">imaged_structure</span><span class="o">.</span><span class="n">gro</span>
-  <span class="n">properties</span><span class="p">:</span>
-      <span class="n">selection</span><span class="p">:</span> <span class="n">Protein</span>
+<span class="nt">step23_dry</span><span class="p">:</span>
+  <span class="nt">paths</span><span class="p">:</span>
+      <span class="nt">input_structure_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step18_mdrun_md/output_gro_path</span>
+      <span class="nt">input_top_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step17_grompp_md/output_tpr_path</span>
+      <span class="nt">output_str_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">imaged_structure.gro</span>
+  <span class="nt">properties</span><span class="p">:</span>
+      <span class="nt">selection</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Protein</span>
 </pre></div>
 
-    </div>
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14099,18 +14051,14 @@ Example:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">python</span> <span class="n">biobb_MDsetup_tutorial</span><span class="o">.</span><span class="n">py</span> <span class="n">biobb_MDsetup_tutorial</span><span class="o">.</span><span class="n">yaml</span>
-</pre></div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 
-    </div>
+<pre><code>python biobb_MDsetup_tutorial.py biobb_MDsetup_tutorial.yaml</code></pre>
+
 </div>
 </div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">

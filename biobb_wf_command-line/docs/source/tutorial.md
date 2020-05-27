@@ -982,5 +982,5 @@ Questions, issues, suggestions and comments are really welcome!
     * https://github.com/bioexcel/biobb
 
 * BioExcel forum:
-    * https://ask.bioexcel.eu/ (TODO: biobb category)
+    * https://ask.bioexcel.eu/c/BioExcel-Building-Blocks-library
 

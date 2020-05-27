@@ -31,7 +31,7 @@ This tutorial aims to illustrate the process of **building up a command-line wor
 
 
 ***
-![](logo.png)
+![](_static/bioexcel_logo.png)
 ***
 
 
@@ -979,8 +979,8 @@ If you have found the tutorial interesting, please take a look at the **[BioExce
 Questions, issues, suggestions and comments are really welcome!
 
 * GitHub issues:
-    * https://github.com/bioexcel/biobb
+    * [https://github.com/bioexcel/biobb](https://github.com/bioexcel/biobb)
 
 * BioExcel forum:
-    * https://ask.bioexcel.eu/c/BioExcel-Building-Blocks-library
+    * [https://ask.bioexcel.eu/c/BioExcel-Building-Blocks-library](https://ask.bioexcel.eu/c/BioExcel-Building-Blocks-library)
 

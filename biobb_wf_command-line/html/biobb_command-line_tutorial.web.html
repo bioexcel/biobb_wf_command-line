@@ -13884,8 +13884,8 @@ Example:
     <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppion.tpr</span>
   <span class="nt">properties</span><span class="p">:</span>
     <span class="nt">mdp</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
       <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+    <span class="nt">simulation_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
 
 <span class="nt">step7_genion</span><span class="p">:</span>
   <span class="nt">paths</span><span class="p">:</span>
@@ -13904,9 +13904,9 @@ Example:
     <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppmin.tpr</span>
   <span class="nt">properties</span><span class="p">:</span>
     <span class="nt">mdp</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
       <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
       <span class="nt">emtol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">500</span>
+    <span class="nt">simulation_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">minimization</span>
 
 <span class="nt">step9_mdrun_min</span><span class="p">:</span>
   <span class="nt">paths</span><span class="p">:</span>
@@ -13930,8 +13930,8 @@ Example:
     <span class="nt">output_tpr_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gppnvt.tpr</span>
   <span class="nt">properties</span><span class="p">:</span>
     <span class="nt">mdp</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt</span>
       <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+    <span class="nt">simulation_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">nvt</span>
 
 <span class="nt">step12_mdrun_nvt</span><span class="p">:</span>
   <span class="nt">paths</span><span class="p">:</span>
@@ -13957,8 +13957,8 @@ Example:
     <span class="nt">input_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step12_mdrun_nvt/output_cpt_path</span>
   <span class="nt">properties</span><span class="p">:</span>
     <span class="nt">mdp</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt</span>
       <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">5000</span>
+    <span class="nt">simulation_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">npt</span>
 
 <span class="nt">step15_mdrun_npt</span><span class="p">:</span>
   <span class="nt">paths</span><span class="p">:</span>
@@ -13984,8 +13984,8 @@ Example:
     <span class="nt">input_cpt_path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">dependency/step15_mdrun_npt/output_cpt_path</span>
   <span class="nt">properties</span><span class="p">:</span>
     <span class="nt">mdp</span><span class="p">:</span>
-      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">free</span>
       <span class="nt">nsteps</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">50000</span>
+    <span class="nt">simulation_type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">free</span>
 
 <span class="nt">step18_mdrun_md</span><span class="p">:</span>
   <span class="nt">paths</span><span class="p">:</span>

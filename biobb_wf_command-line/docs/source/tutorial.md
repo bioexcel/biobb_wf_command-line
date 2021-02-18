@@ -686,8 +686,8 @@ step6_grompp_genion:
     output_tpr_path: gppion.tpr
   properties:
     mdp:
-      type: minimization
       nsteps: 5000
+    simulation_type: minimization
 
 step7_genion:
   paths:
@@ -706,9 +706,9 @@ step8_grompp_min:
     output_tpr_path: gppmin.tpr
   properties:
     mdp:
-      type: minimization
       nsteps: 5000
       emtol: 500
+    simulation_type: minimization
 
 step9_mdrun_min:
   paths:
@@ -732,8 +732,8 @@ step11_grompp_nvt:
     output_tpr_path: gppnvt.tpr
   properties:
     mdp:
-      type: nvt
       nsteps: 5000
+    simulation_type: nvt
 
 step12_mdrun_nvt:
   paths:
@@ -759,8 +759,8 @@ step14_grompp_npt:
     input_cpt_path: dependency/step12_mdrun_nvt/output_cpt_path
   properties:
     mdp:
-      type: npt
       nsteps: 5000
+    simulation_type: npt
 
 step15_mdrun_npt:
   paths:
@@ -786,8 +786,8 @@ step17_grompp_md:
     input_cpt_path: dependency/step15_mdrun_npt/output_cpt_path
   properties:
     mdp:
-      type: free
       nsteps: 50000
+    simulation_type: free
 
 step18_mdrun_md:
   paths:
